@@ -1,0 +1,19 @@
+services:
+  meshop.api:
+    image: ${DOCKER_REGISTRY-}meshopapi
+    container_name: meShop.Api
+    build:
+      context: .
+      dockerfile: Sample1/src/API/meShop.API/Dockerfile
+    ports:
+      - 5000:8080
+      - 5001:8081
+      
+  meshop.seq:
+    image: datalust/seq:latest
+    container_name: meShop.Seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80

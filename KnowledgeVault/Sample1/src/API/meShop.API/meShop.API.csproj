@@ -7,6 +7,7 @@
     <UserSecretsId>21ac8f55-089d-4e3c-8911-592498de92ea</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +28,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\meShop.Modules.Product.Core\meShop.Modules.Product.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\meShop.Modules.Product.Presentation\meShop.Modules.Product.Presentation.csproj" />
     <ProjectReference Include="..\..\..\..\meShop.SharedKernel.Core\meShop.SharedKernel.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\meShop.SharedKernel.Presentation\meShop.SharedKernel.Presentation.csproj" />
   </ItemGroup>
 
 </Project>
