@@ -1,8 +1,8 @@
 using meShop.API.Extensions;
 using meShop.API.Middleware;
-using meShop.Modules.Product.Presentation;
-using meShop.SharedKernel.Presentation.Endpoints;
+using meShop.Modules.Product.Infrastructure;
 using meShop.SharedKernel.Core;
+using meShop.SharedKernel.Presentation.Endpoints;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,14 +19,9 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddCore([meShop.Modules.Product.Core.AssemblyReference.Assembly]);
-builder.Services.AddProductPresentationModule();
+builder.Services.AddProductModule();
 
 builder.Configuration.AddModuleConfiguration(["product"]);
-
-//infra-persistence
-//builder.Services.AddProductModule(builder.Configuration);
-
-//builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -34,8 +29,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
-    //app.MapOpenApi();
+    app.UseSwaggerUI();   
 }
 
 app.MapEndpoints();
