@@ -1,0 +1,6 @@
+@meShop.API_HostAddress = http://localhost:5216
+
+GET {{meShop.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
