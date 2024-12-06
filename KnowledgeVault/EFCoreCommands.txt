@@ -1,0 +1,12 @@
+Install: dotnet tool install --global dotnet-ef
+
+Sample1:
+
+dotnet ef migrations add InitialCreate
+dotnet ef migrations add InitialCreate --startup-project ../../../API/meShop.API
+
+dotnet ef database update
+dotnet ef database update --startup-project ../../../API/meShop.API
+
+dotnet ef database update [previous migration name] -> if the migration to remove has been applied
+dotnet ef migrations remove -> removes the last migration
