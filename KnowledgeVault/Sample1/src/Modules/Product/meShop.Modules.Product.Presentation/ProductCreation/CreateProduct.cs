@@ -15,10 +15,11 @@ internal class CreateProduct : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("product", async (Request request, ISender sender) =>
+        app.MapPost("product", 
+            async (Request request, ISender sender, CancellationToken cancellationToken) =>
         {
             Result<Guid> result = await sender.Send(
-                new CreateProductCommand(request.Name));
+                new CreateProductCommand(request.Name), cancellationToken);
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })

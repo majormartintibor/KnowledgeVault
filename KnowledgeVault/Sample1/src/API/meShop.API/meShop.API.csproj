@@ -30,6 +30,8 @@
     <ProjectReference Include="..\..\Modules\Product\meShop.Modules.Product.Infrastructure\meShop.Modules.Product.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Product\meShop.Modules.Product.Presentation\meShop.Modules.Product.Presentation.csproj" />
     <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Core\meShop.SharedKernel.Core.csproj" />
+    <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Infrastructure\meShop.SharedKernel.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Persistence\meShop.SharedKernel.Persistence.csproj" />
     <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Presentation\meShop.SharedKernel.Presentation.csproj" />
   </ItemGroup>
 </Project>

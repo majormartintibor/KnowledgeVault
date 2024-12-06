@@ -2,6 +2,8 @@ using meShop.API.Extensions;
 using meShop.API.Middleware;
 using meShop.Modules.Product.Infrastructure;
 using meShop.SharedKernel.Core;
+using meShop.SharedKernel.Infrastructure;
+using meShop.SharedKernel.Persistence;
 using meShop.SharedKernel.Presentation.Endpoints;
 using Serilog;
 
@@ -19,7 +21,9 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddCore([meShop.Modules.Product.Core.AssemblyReference.Assembly]);
-builder.Services.AddProductModule();
+builder.Services.AddInfrastructure();
+builder.Services.AddPersistence(builder.Configuration.GetConnectionString("Database")!);
+builder.Services.AddProductModule(builder.Configuration);
 
 builder.Configuration.AddModuleConfiguration(["product"]);
 
@@ -29,7 +33,9 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();   
+    app.UseSwaggerUI();
+
+    app.ApplyMigrations();
 }
 
 app.MapEndpoints();
