@@ -15,7 +15,7 @@ namespace meShop.Modules.Product.Persistence.Migrations
                 name: "products");
 
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 schema: "products",
                 columns: table => new
                 {
@@ -24,7 +24,7 @@ namespace meShop.Modules.Product.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_product", x => x.id);
+                    table.PrimaryKey("pk_products", x => x.id);
                 });
         }
 
@@ -32,7 +32,7 @@ namespace meShop.Modules.Product.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Product",
+                name: "Products",
                 schema: "products");
         }
     }

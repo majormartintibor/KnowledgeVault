@@ -6,7 +6,11 @@ services:
       context: .
       dockerfile: Sample1/src/API/meShop.API/Dockerfile
     ports:
-      - 8080:8080      
+      - 5000:8080
+      - 5001:8081 
+    depends_on:
+      - meshop.database
+      - meshop.seq
   
   meshop.database:
     image: postgres:latest

@@ -12,11 +12,17 @@ internal sealed class CreateProductCommandHandler(
     public async Task<Result<Guid>> Handle(
         CreateProductCommand request, 
         CancellationToken cancellationToken)
-    {        
-        var id = Guid.NewGuid();
-        await productRepository.InsertProductAsync(new DomainModels.ProductDOM { Id = id, Name = request.Name });
+    {
+        Result<Domain.Product> result = Domain.Product.Create(request.Name);
+
+        if (result.IsFailure)
+        {
+            return Result.Failure<Guid>(result.Error);
+        }
+        
+        await productRepository.InsertProductAsync(result.Value);
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return id;
+        return result.Value.Id;
     }
 }

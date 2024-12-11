@@ -23,7 +23,7 @@ namespace meShop.Modules.Product.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("meShop.Modules.Product.Persistence.Entities.Product.ProductEntity", b =>
+            modelBuilder.Entity("meShop.Modules.Product.Core.DomainModels.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,9 +36,9 @@ namespace meShop.Modules.Product.Persistence.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("Id")
-                        .HasName("pk_product");
+                        .HasName("pk_products");
 
-                    b.ToTable("Product", "products");
+                    b.ToTable("Products", "products");
                 });
 #pragma warning restore 612, 618
         }

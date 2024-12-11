@@ -1,13 +1,9 @@
 ﻿namespace meShop.SharedKernel.Core.Domain;
-
-public abstract class DomainModel
+public abstract class Entity
 {
     private readonly List<IDomainEvent> _domainEvents = [];
 
-    protected DomainModel()
-    {
-
-    }
+    protected Entity() { }
 
     public IReadOnlyCollection<IDomainEvent> DomainEvents => [.. _domainEvents];
 

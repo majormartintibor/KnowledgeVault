@@ -1,7 +1,7 @@
 ﻿using meShop.Modules.Product.Core.Abstractions.Data;
 using meShop.Modules.Product.Core.Ports.Incoming;
 using meShop.Modules.Product.Persistence.Database;
-using meShop.Modules.Product.Persistence.Entities.Product;
+using meShop.Modules.Product.Persistence.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +28,6 @@ public static class PersistenceConfiguration
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ProductDbContext>());
 
-        services.AddScoped<IProductRepository, ProductEntityRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
     }
 }

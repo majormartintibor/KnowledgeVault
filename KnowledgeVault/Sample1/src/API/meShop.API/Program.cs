@@ -1,3 +1,4 @@
+using HealthChecks.UI.Client;
 using meShop.API.Extensions;
 using meShop.API.Middleware;
 using meShop.Modules.Product.Infrastructure;
@@ -5,6 +6,7 @@ using meShop.SharedKernel.Core;
 using meShop.SharedKernel.Infrastructure;
 using meShop.SharedKernel.Persistence;
 using meShop.SharedKernel.Presentation.Endpoints;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,25 +22,45 @@ builder.Services.AddSwaggerGen(options =>
     options.CustomSchemaIds(t => t.FullName?.Replace("+", "."));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowDevelopmentOrigin", builder =>
+    {
+        builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
+var databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
+
 builder.Services.AddCore([meShop.Modules.Product.Core.AssemblyReference.Assembly]);
 builder.Services.AddInfrastructure();
-builder.Services.AddPersistence(builder.Configuration.GetConnectionString("Database")!);
+builder.Services.AddPersistence(databaseConnectionString);
 builder.Services.AddProductModule(builder.Configuration);
 
 builder.Configuration.AddModuleConfiguration(["product"]);
 
+builder.Services.AddHealthChecks()
+    .AddNpgSql(databaseConnectionString);
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
+    app.UseCors("AllowDevelopmentOrigin");
     app.ApplyMigrations();
 }
 
 app.MapEndpoints();
+
+app.MapHealthChecks("health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.UseSerilogRequestLogging();
 

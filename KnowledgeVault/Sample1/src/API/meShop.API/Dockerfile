@@ -29,6 +29,6 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "meShop.API.dll"]
 
-ENV ASPNETCORE_URLS=http://+80
-EXPOSE 80
-ENTRYPOINT ["dotnet", "meShop.API.dll"]
+#ENV ASPNETCORE_URLS=http://+80
+#EXPOSE 80
+#ENTRYPOINT ["dotnet", "meShop.API.dll"]
