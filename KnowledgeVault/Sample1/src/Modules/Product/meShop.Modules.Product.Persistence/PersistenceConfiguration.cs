@@ -2,6 +2,7 @@
 using meShop.Modules.Product.Core.Ports.Incoming;
 using meShop.Modules.Product.Persistence.Database;
 using meShop.Modules.Product.Persistence.Products;
+using meShop.SharedKernel.Persistence.Interceptors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -17,14 +18,14 @@ public static class PersistenceConfiguration
         string databaseConnectionString
             = configuration.GetConnectionString("Database")!;
 
-        services.AddDbContext<ProductDbContext>(options =>
+        services.AddDbContext<ProductDbContext>((sp, options) =>
             options
                 .UseNpgsql(
                     databaseConnectionString,
                     npgsqlOptions => npgsqlOptions
                         .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Products))
                 .UseSnakeCaseNamingConvention()
-                .AddInterceptors());
+                .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>()));
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ProductDbContext>());
 

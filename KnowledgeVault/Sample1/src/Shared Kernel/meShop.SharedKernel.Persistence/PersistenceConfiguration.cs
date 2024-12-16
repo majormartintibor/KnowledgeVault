@@ -1,5 +1,6 @@
 ﻿using meShop.SharedKernel.Core.Data;
 using meShop.SharedKernel.Persistence.Data;
+using meShop.SharedKernel.Persistence.Interceptors;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
@@ -14,6 +15,8 @@ public static class PersistenceConfiguration
     {
         NpgsqlDataSource npgsqlDataSource = new NpgsqlDataSourceBuilder(databaseConenctionString).Build();
         services.TryAddSingleton(npgsqlDataSource);
+
+        services.TryAddSingleton<PublishDomainEventsInterceptor>();
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 
