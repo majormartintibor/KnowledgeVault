@@ -36,11 +36,16 @@ builder.Services.AddCors(options =>
 var databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
 
 builder.Services.AddCore([meShop.Modules.Product.Core.AssemblyReference.Assembly]);
-builder.Services.AddInfrastructure();
+
+builder.Services.AddInfrastructure(
+    [ProductModule.ConfigureConsumers]);
+
 builder.Services.AddPersistence(databaseConnectionString);
 builder.Services.AddProductModule(builder.Configuration);
+//builder.Services.AddPricingModule(builder.Configuration);
+//builder.Services.AddHRModule(builder.Configuration);
 
-builder.Configuration.AddModuleConfiguration(["product"]);
+builder.Configuration.AddModuleConfiguration(["product" /*,pricing, hr */]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(databaseConnectionString);

@@ -1,4 +1,5 @@
-﻿using meShop.Modules.Product.Persistence;
+﻿using MassTransit;
+using meShop.Modules.Product.Persistence;
 using meShop.Modules.Product.Presentation;
 using meShop.SharedKernel.Presentation.Endpoints;
 using Microsoft.Extensions.Configuration;
@@ -14,5 +15,10 @@ public static class ProductModule
         services.AddEndpoints(AssemblyReference.Assembly);
         services.AddProductPersistence(configuration);
         return services;
+    }
+
+    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator)
+    {
+        //registrationConfigurator.AddConsumer<>();
     }
 }
