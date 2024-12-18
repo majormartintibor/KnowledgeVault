@@ -1,0 +1,11 @@
+{
+  "HR": {
+    "KeyCloak": {
+      "AdminUrl": "http://meshop.identity:8080/admin/realms/meshop/",
+      "TokenUrl": "http://meshop.identity:8080/realms/meshop/protocol/openid-connect/token",
+      "ConfidentialClientId": "meshop-confidential-client",
+      "ConfidentialClientSecret": "",
+      "PublicClientId": "meshop-public-client"
+    }
+  }
+}

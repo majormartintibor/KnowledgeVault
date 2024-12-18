@@ -1,0 +1,11 @@
+{
+  "HR": {
+    "KeyCloak": {
+      "AdminUrl": "",
+      "TokenUrl": "",
+      "ConfidentialClientId": "",
+      "ConfidentialClientSecret": "",
+      "PublicClientId": ""
+    }
+  }
+}

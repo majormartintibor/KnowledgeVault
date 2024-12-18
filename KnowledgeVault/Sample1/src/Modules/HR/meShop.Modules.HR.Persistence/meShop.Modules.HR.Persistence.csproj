@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Persistence\meShop.SharedKernel.Persistence.csproj" />
+    <ProjectReference Include="..\meShop.Modules.HR.Core\meShop.Modules.HR.Core.csproj" />
+  </ItemGroup>
+
 </Project>

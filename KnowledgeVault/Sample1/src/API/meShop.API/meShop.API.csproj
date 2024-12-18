@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Modules\HR\meShop.Modules.HR.Infrastructure\meShop.Modules.HR.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Product\meShop.Modules.Product.Infrastructure\meShop.Modules.Product.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Product\meShop.Modules.Product.Presentation\meShop.Modules.Product.Presentation.csproj" />
     <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Core\meShop.SharedKernel.Core.csproj" />

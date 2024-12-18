@@ -1,6 +1,7 @@
 using HealthChecks.UI.Client;
 using meShop.API.Extensions;
 using meShop.API.Middleware;
+using meShop.Modules.HR.Infrastructure;
 using meShop.Modules.Product.Infrastructure;
 using meShop.SharedKernel.Core;
 using meShop.SharedKernel.Infrastructure;
@@ -35,17 +36,28 @@ builder.Services.AddCors(options =>
 
 var databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
 
-builder.Services.AddCore([meShop.Modules.Product.Core.AssemblyReference.Assembly]);
+builder.Services.AddCore([
+    meShop.Modules.Product.Core.AssemblyReference.Assembly,
+    meShop.Modules.HR.Core.AssemblyReference.Assembly]);
 
 builder.Services.AddInfrastructure(
-    [ProductModule.ConfigureConsumers]);
+    [
+        ProductModule.ConfigureConsumers,
+        HRModule.ConfigureConsumers,
+    ]);
 
 builder.Services.AddPersistence(databaseConnectionString);
-builder.Services.AddProductModule(builder.Configuration);
-//builder.Services.AddPricingModule(builder.Configuration);
-//builder.Services.AddHRModule(builder.Configuration);
 
-builder.Configuration.AddModuleConfiguration(["product" /*,pricing, hr */]);
+builder.Services.AddProductModule(builder.Configuration);
+builder.Services.AddPricingModule(builder.Configuration);
+builder.Services.AddHRModule(builder.Configuration);
+
+builder.Configuration.AddModuleConfiguration(
+    [
+        "product", 
+        "hr", 
+        "pricing"
+    ]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(databaseConnectionString);

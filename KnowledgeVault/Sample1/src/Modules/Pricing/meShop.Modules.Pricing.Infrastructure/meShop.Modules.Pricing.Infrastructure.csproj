@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Infrastructure\meShop.SharedKernel.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Presentation\meShop.SharedKernel.Presentation.csproj" />
+    <ProjectReference Include="..\meShop.Modules.Pricing.Persistence\meShop.Modules.Pricing.Persistence.csproj" />
+    <ProjectReference Include="..\meShop.Modules.Pricing.Presentation\meShop.Modules.Pricing.Presentation.csproj" />
+  </ItemGroup>
+
 </Project>
