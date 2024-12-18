@@ -13,8 +13,4 @@
     <ProjectReference Include="..\meShop.Modules.HR.Presentation\meShop.Modules.HR.Presentation.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Identity\" />
-  </ItemGroup>
-
 </Project>

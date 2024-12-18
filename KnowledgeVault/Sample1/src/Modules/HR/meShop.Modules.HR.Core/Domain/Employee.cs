@@ -17,7 +17,7 @@ public class Employee : Entity
             Name = name,
         };
 
-        employee.Raise(new EmployeeCreatedDomainEvent(employee.Id));
+        employee.Raise(new EmployeeRegisteredDomainEvent(employee.Id));
 
         return employee;
     }
