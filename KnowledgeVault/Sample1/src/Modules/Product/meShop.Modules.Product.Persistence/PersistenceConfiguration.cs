@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace meShop.Modules.Product.Persistence;
+
 public static class PersistenceConfiguration
 {
     public static void AddProductPersistence(

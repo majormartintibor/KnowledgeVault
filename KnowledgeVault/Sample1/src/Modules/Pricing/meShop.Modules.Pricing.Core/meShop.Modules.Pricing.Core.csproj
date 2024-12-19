@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Core\meShop.SharedKernel.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
+
 </Project>
