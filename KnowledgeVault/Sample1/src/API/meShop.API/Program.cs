@@ -64,7 +64,8 @@ builder.Configuration.AddModuleConfiguration(
     ]);
 
 builder.Services.AddHealthChecks()
-    .AddNpgSql(databaseConnectionString);
+    .AddNpgSql(databaseConnectionString)
+    .AddUrlGroup(new Uri(builder.Configuration.GetValue<string>("KeyCloak:HealthUrl")!), HttpMethod.Get, "keycloak");
 
 var app = builder.Build();
 
@@ -88,5 +89,9 @@ app.UseSerilogRequestLogging();
 app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 await app.RunAsync();
