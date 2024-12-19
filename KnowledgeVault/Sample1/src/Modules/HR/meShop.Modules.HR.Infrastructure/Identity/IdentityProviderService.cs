@@ -10,27 +10,27 @@ internal sealed class IdentityProviderService(KeyCloakClient keyCloakClient, ILo
 {
     private const string PasswordCredentialType = "Password";
 
-    // POST /admin/realms/{realm}/users
-    public async Task<Result<string>> RegisterUserAsync(UserModel user, CancellationToken cancellationToken = default)
+    // POST /admin/realms/{realm}/employees
+    public async Task<Result<string>> RegisterEmployeeAsync(EmployeeModel employee, CancellationToken cancellationToken = default)
     {
-        var userRepresentation = new UserRepresentation(
-            user.Email,
-            user.Email,
-            user.FirstName,
-            user.LastName,
+        var employeeRepresentation = new EmployeeRepresentation(
+            employee.Email,
+            employee.Email,
+            employee.FirstName,
+            employee.LastName,
             true,
             true,
-            [new CredentialRepresentation(PasswordCredentialType, user.Password, false)]);
+            [new CredentialRepresentation(PasswordCredentialType, employee.Password, false)]);
 
         try
         {
-            string identityId = await keyCloakClient.RegisterUserAsync(userRepresentation, cancellationToken);
+            string identityId = await keyCloakClient.RegisterEmployeeAsync(employeeRepresentation, cancellationToken);
 
             return identityId;
         }
         catch (HttpRequestException exception) when (exception.StatusCode == HttpStatusCode.Conflict)
         {
-            logger.LogError(exception, "User registration failed");
+            logger.LogError(exception, "Employee registration failed");
 
             return Result.Failure<string>(IdentityProviderErrors.EmailIsNotUnique);
         }

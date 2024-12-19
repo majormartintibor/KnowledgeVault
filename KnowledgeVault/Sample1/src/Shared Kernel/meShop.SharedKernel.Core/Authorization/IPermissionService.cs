@@ -3,5 +3,5 @@
 namespace meShop.SharedKernel.Core.Authorization;
 public interface IPermissionService
 {
-    Task<Result<PermissionsResponse>> GetUserPermissionsAsync(string identityId);
+    Task<Result<PermissionsResponse>> GetEmployeePermissionsAsync(string identityId);
 }

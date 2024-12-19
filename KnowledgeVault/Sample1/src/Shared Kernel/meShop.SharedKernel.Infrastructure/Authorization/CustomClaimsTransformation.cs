@@ -22,16 +22,16 @@ internal sealed class CustomClaimsTransformation(IServiceScopeFactory serviceSco
 
         string identityId = principal.GetIdentityId();
 
-        Result<PermissionsResponse> result = await permissionService.GetUserPermissionsAsync(identityId);
+        Result<PermissionsResponse> result = await permissionService.GetEmployeePermissionsAsync(identityId);
 
         if (result.IsFailure)
         {
-            throw new MeShopException(nameof(IPermissionService.GetUserPermissionsAsync), result.Error);
+            throw new MeShopException(nameof(IPermissionService.GetEmployeePermissionsAsync), result.Error);
         }
 
         var claimsIdentity = new ClaimsIdentity();
 
-        claimsIdentity.AddClaim(new Claim(CustomClaims.Sub, result.Value.UserId.ToString()));
+        claimsIdentity.AddClaim(new Claim(CustomClaims.Sub, result.Value.EmployeeId.ToString()));
 
         foreach (string permission in result.Value.Permissions)
         {

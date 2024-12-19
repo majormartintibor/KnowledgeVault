@@ -5,19 +5,19 @@ using System.Security.Claims;
 namespace meShop.SharedKernel.Infrastructure.Authentication;
 public static class ClaimsPrincipalExtensions
 {
-    public static Guid GetUserId(this ClaimsPrincipal? principal)
+    public static Guid GetEmployeeId(this ClaimsPrincipal? principal)
     {
-        string? userId = principal?.FindFirst(CustomClaims.Sub)?.Value;
+        string? employeeId = principal?.FindFirst(CustomClaims.Sub)?.Value;
 
-        return Guid.TryParse(userId, out Guid parsedUserId) ?
-        parsedUserId :
-            throw new MeShopException("User identifier is unavailable");
+        return Guid.TryParse(employeeId, out Guid parsedEmployeeId) ?
+        parsedEmployeeId :
+            throw new MeShopException("Employee identifier is unavailable");
     }
 
     public static string GetIdentityId(this ClaimsPrincipal? principal)
     {
         return principal?.FindFirst(ClaimTypes.NameIdentifier)?.Value ??
-               throw new MeShopException("User identity is unavailable");
+               throw new MeShopException("Employee identity is unavailable");
     }
 
     public static HashSet<string> GetPermissions(this ClaimsPrincipal? principal)

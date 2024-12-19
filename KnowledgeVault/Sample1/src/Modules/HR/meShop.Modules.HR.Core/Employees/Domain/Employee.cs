@@ -1,6 +1,7 @@
 ﻿using meShop.SharedKernel.Core.Domain;
 
-namespace meShop.Modules.HR.Core.Domain;
+namespace meShop.Modules.HR.Core.Employees.Domain;
+
 public class Employee : Entity
 {
     public Guid Id { get; set; }

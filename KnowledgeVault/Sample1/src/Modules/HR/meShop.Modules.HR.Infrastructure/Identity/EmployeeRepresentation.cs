@@ -1,6 +1,6 @@
 ﻿namespace meShop.Modules.HR.Infrastructure.Identity;
 
-internal sealed record UserRepresentation(
+internal sealed record EmployeeRepresentation(
     string Username,
     string Email,
     string FirstName,

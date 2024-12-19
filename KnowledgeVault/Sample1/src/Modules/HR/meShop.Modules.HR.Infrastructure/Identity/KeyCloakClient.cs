@@ -4,11 +4,11 @@ namespace meShop.Modules.HR.Infrastructure.Identity;
 
 internal sealed class KeyCloakClient(HttpClient httpClient)
 {
-    internal async Task<string> RegisterUserAsync(UserRepresentation user, CancellationToken cancellationToken = default)
+    internal async Task<string> RegisterEmployeeAsync(EmployeeRepresentation employee, CancellationToken cancellationToken = default)
     {
         HttpResponseMessage httpResponseMessage = await httpClient.PostAsJsonAsync(
             "users",
-            user,
+            employee,
             cancellationToken);
 
         httpResponseMessage.EnsureSuccessStatusCode();
@@ -19,7 +19,7 @@ internal sealed class KeyCloakClient(HttpClient httpClient)
     private static string ExtractIdentityIdFromLocationHeader(
         HttpResponseMessage httpResponseMessage)
     {
-        const string usersSegmentName = "users/";
+        const string employeesSegmentName = "users/";
 
         string? locationHeader = httpResponseMessage.Headers.Location?.PathAndQuery;
 
@@ -28,11 +28,11 @@ internal sealed class KeyCloakClient(HttpClient httpClient)
             throw new InvalidOperationException("Location header is null");
         }
 
-        int userSegmentValueIndex = locationHeader.IndexOf(
-            usersSegmentName,
+        int employeeSegmentValueIndex = locationHeader.IndexOf(
+            employeesSegmentName,
             StringComparison.InvariantCultureIgnoreCase);
 
-        string identityId = locationHeader.Substring(userSegmentValueIndex + usersSegmentName.Length);
+        string identityId = locationHeader.Substring(employeeSegmentValueIndex + employeesSegmentName.Length);
 
         return identityId;
     }

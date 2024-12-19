@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using meShop.Modules.HR.Core.Employees.Domain;
 using meShop.SharedKernel.Core.Authorization;
 using meShop.SharedKernel.Core.Data;
 using meShop.SharedKernel.Core.Domain;
@@ -22,7 +23,7 @@ internal sealed class GetEmployeePermissionsQueryHandler(IDbConnectionFactory db
                  u.id AS {nameof(EmployeePermission.EmployeeId)},
                  rp.permission_code AS {nameof(EmployeePermission.Permission)}
              FROM hr.employees u
-             JOIN hr.employee_roles ur ON ur.user_id = u.id
+             JOIN hr.employee_roles ur ON ur.employee_id = u.id
              JOIN hr.role_permissions rp ON rp.role_name = ur.role_name
              WHERE u.identity_id = @IdentityId
              """;

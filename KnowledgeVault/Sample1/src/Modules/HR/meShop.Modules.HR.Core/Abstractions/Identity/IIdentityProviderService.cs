@@ -4,5 +4,5 @@ namespace meShop.Modules.HR.Core.Abstractions.Identity;
 
 public interface IIdentityProviderService
 {
-    Task<Result<string>> RegisterUserAsync(UserModel user, CancellationToken cancellationToken = default);
+    Task<Result<string>> RegisterEmployeeAsync(EmployeeModel employee, CancellationToken cancellationToken = default);
 }

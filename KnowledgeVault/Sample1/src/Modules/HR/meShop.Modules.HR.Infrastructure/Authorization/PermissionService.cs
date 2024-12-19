@@ -6,7 +6,7 @@ using meShop.SharedKernel.Core.Domain;
 namespace meShop.Modules.HR.Infrastructure.Authorization;
 internal sealed class PermissionService(ISender sender) : IPermissionService
 {
-    public async Task<Result<PermissionsResponse>> GetUserPermissionsAsync(string identityId)
+    public async Task<Result<PermissionsResponse>> GetEmployeePermissionsAsync(string identityId)
     {
         return await sender.Send(new GetEmployeePermissionsQuery(identityId));
     }
