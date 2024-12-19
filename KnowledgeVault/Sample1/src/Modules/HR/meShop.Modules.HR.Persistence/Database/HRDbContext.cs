@@ -15,4 +15,7 @@ public sealed class HRDbContext(DbContextOptions<HRDbContext> options)
         modelBuilder.HasDefaultSchema(Schemas.HR);
 
         modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
-    }}
+        modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        modelBuilder.ApplyConfiguration(new PermissionConfiguration());        
+    }
+}
