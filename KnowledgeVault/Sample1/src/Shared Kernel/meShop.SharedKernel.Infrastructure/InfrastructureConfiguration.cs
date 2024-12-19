@@ -1,6 +1,8 @@
 ﻿using MassTransit;
 using meShop.SharedKernel.Core.Clock;
 using meShop.SharedKernel.Core.EventBus;
+using meShop.SharedKernel.Infrastructure.Authentication;
+using meShop.SharedKernel.Infrastructure.Authorization;
 using meShop.SharedKernel.Infrastructure.Clock;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -13,6 +15,9 @@ public static class InfrastructureConfiguration
         this IServiceCollection services,
         Action<IRegistrationConfigurator>[] moduleConfigureConsumers)
     {
+        services.AddAuthenticationInternal();
+        services.AddAuthorizationInternal();
+
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         services.TryAddSingleton<IEventBus, EventBus.EventBus>();
