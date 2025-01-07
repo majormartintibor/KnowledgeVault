@@ -36,7 +36,7 @@ services:
 
   meshop.identity:
     image: quay.io/keycloak/keycloak:latest
-    container_name: meshop.Identity
+    container_name: meShop.Identity
     command: start-dev --import-realm
     environment:
       - KC_HEALTH_ENABLED=true

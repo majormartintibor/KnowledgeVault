@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using meShop.SharedKernel.Core.Messaging;
 
 namespace meShop.Modules.HR.Core.Employees.RegisterEmployee;
-internal class RegisterEmployeeCommand
-{
-}
+
+public sealed record RegisterEmployeeCommand(
+    string Email,
+    string Password,
+    string FirstName,
+    string LastName) : ICommand<Guid>;

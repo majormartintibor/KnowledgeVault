@@ -6,7 +6,7 @@ public class Employee : Entity
 {
     private readonly List<Role> _roles = [];
 
-    public Guid Id { get; set; }    
+    public Guid Id { get; private set; }    
     public string Email { get; private set; } = string.Empty;
 
     public string FirstName { get; private set; } = string.Empty;
@@ -21,7 +21,7 @@ public class Employee : Entity
 
     private Employee() { }
 
-    public static Result<Employee> Create(        
+    public static Employee Create(        
         string email, 
         string firstName, 
         string lastName, 

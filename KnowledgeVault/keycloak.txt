@@ -1,0 +1,3 @@
+get a token:
+http://localhost:18080/realms/meshop/protocol/openid-connect/token
+jwt.io to inspect a token

@@ -23,6 +23,7 @@ internal class CreateProduct : IEndpoint
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
+        .RequireAuthorization()
         .WithTags(Tags.Product);
     }
 }

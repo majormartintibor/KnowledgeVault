@@ -5,10 +5,13 @@ VisualStudioVersion = 17.12.35506.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3BE34FEE-15B6-406C-97F1-A7EB72B755F2}"
 	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
 		Definitions.md = Definitions.md
 		dockerCommands.txt = dockerCommands.txt
 		EFCoreCommands.txt = EFCoreCommands.txt
+		keycloak.txt = keycloak.txt
 		..\README.md = ..\README.md
+		Sample1\realm-export.json = Sample1\realm-export.json
 		Samples.md = Samples.md
 	EndProjectSection
 EndProject
