@@ -4,6 +4,7 @@ Sample1:
 
 dotnet ef migrations add InitialCreate
 dotnet ef migrations add InitialCreate --startup-project ../../../API/meShop.API
+dotnet ef migrations add InitialCreate --startup-project ../../../API/meShop.API --context HRdbContext
 
 dotnet ef database update
 dotnet ef database update --startup-project ../../../API/meShop.API

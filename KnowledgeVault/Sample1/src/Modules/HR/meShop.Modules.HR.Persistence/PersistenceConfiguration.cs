@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using meShop.Modules.HR.Persistence.Database;
+using meShop.Modules.HR.Persistence.Employees;
+using meShop.Modules.HR.Core.Employees.Ports.Incomming;
 
 namespace meShop.Modules.HR.Persistence;
 public static class PersistenceConfiguration
@@ -27,6 +29,6 @@ public static class PersistenceConfiguration
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<HRDbContext>());
 
-        //services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
     }
 }

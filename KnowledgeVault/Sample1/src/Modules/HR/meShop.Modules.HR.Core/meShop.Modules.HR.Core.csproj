@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Core\meShop.SharedKernel.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Employees\GetEmployee\" />
+    <ProjectReference Include="..\meShop.Modules.HR.IntegrationEvents\meShop.Modules.HR.IntegrationEvents.csproj" />
   </ItemGroup>
 
 </Project>

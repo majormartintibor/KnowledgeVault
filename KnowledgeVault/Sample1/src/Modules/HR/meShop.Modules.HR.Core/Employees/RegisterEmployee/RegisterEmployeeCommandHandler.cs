@@ -16,8 +16,8 @@ internal sealed class RegisterEmployeeCommandHandler(
     public async Task<Result<Guid>> Handle(RegisterEmployeeCommand request, CancellationToken cancellationToken)
     {
         Result<string> result = await identityProviderService.RegisterEmployeeAsync(
-            new EmployeeModel(request.Email, request.Password, request.FirstName, request.LastName)
-            , cancellationToken);
+            new EmployeeModel(request.Email, request.Password, request.FirstName, request.LastName), 
+             cancellationToken);
 
         if (result.IsFailure)
         {
