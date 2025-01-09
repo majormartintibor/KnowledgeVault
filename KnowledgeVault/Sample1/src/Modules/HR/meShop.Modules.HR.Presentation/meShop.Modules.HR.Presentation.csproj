@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Infrastructure\meShop.SharedKernel.Infrastructure.csproj" />
     <ProjectReference Include="..\..\..\Shared Kernel\meShop.SharedKernel.Presentation\meShop.SharedKernel.Presentation.csproj" />
     <ProjectReference Include="..\meShop.Modules.HR.Core\meShop.Modules.HR.Core.csproj" />
   </ItemGroup>

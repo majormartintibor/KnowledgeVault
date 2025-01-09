@@ -26,10 +26,11 @@ internal sealed class RegisterEmployee : IEndpoint
         .AllowAnonymous()
         .WithTags(Tags.HR);
     }
+
+    internal sealed record Request(
+        string Email,
+        string Password,
+        string FirstName,
+        string LastName);
 }
 
-internal sealed record Request(
-    string Email,
-    string Password,
-    string FirstName,
-    string LastName);
