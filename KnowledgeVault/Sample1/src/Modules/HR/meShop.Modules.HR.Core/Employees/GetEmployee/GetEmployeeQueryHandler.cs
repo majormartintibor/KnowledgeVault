@@ -7,7 +7,7 @@ using System.Data.Common;
 
 namespace meShop.Modules.HR.Core.Employees.GetEmployee;
 
-public sealed class GetEmployeeQueryHandler(IDbConnectionFactory dbConnectionFactory)
+internal sealed class GetEmployeeQueryHandler(IDbConnectionFactory dbConnectionFactory)
     : IQueryHandler<GetEmployeeQuery, EmployeeResponse>
 {
     public async Task<Result<EmployeeResponse>> Handle(GetEmployeeQuery request, CancellationToken cancellationToken)

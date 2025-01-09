@@ -47,3 +47,10 @@ services:
       - ./.files:/opt/keycloak/data/import
     ports:
       - 18080:8080
+
+  meshop.redis:
+    image: redis:latest
+    container_name: meShop.Redis
+    restart: always
+    ports:
+      - 6379:6379

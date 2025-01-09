@@ -32,9 +32,5 @@
     <ProjectReference Include="..\..\Modules\HR\meShop.Modules.HR.Infrastructure\meShop.Modules.HR.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Pricing\meShop.Modules.Pricing.Infrastructure\meShop.Modules.Pricing.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Product\meShop.Modules.Product.Infrastructure\meShop.Modules.Product.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Core\meShop.SharedKernel.Core.csproj" />
-    <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Infrastructure\meShop.SharedKernel.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Persistence\meShop.SharedKernel.Persistence.csproj" />
-    <ProjectReference Include="..\..\Shared Kernel\meShop.SharedKernel.Presentation\meShop.SharedKernel.Presentation.csproj" />
   </ItemGroup>
 </Project>

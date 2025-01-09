@@ -1,4 +1,4 @@
 ﻿using meShop.SharedKernel.Core.Domain;
 
 namespace meShop.Modules.Product.Core.Domain;
-public record ProductCreatedDomainEvent(Guid ProductId) : DomainEvent;
+public sealed record ProductCreatedDomainEvent(Guid ProductId) : DomainEvent;

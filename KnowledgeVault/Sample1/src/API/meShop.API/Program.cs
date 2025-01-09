@@ -35,26 +35,24 @@ builder.Services.AddCors(options =>
     });
 });
 
-var databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
-
 builder.Services.AddCore([
     meShop.Modules.HR.Core.AssemblyReference.Assembly,    
     meShop.Modules.Pricing.Core.AssemblyReference.Assembly,
     meShop.Modules.Product.Core.AssemblyReference.Assembly
    ]);
 
+var databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
+string redisConnectionString = builder.Configuration.GetConnectionString("Cache")!;
+
 builder.Services.AddInfrastructure(
     [
         HRModule.ConfigureConsumers,
         PricingModule.ConfigureConsumers,
         ProductModule.ConfigureConsumers,        
-    ]);
+    ],
+    redisConnectionString);
 
 builder.Services.AddPersistence(databaseConnectionString);
-
-builder.Services.AddHRModule(builder.Configuration);
-builder.Services.AddPricingModule(builder.Configuration);
-builder.Services.AddProductModule(builder.Configuration);
 
 builder.Configuration.AddModuleConfiguration(
     [         
@@ -65,7 +63,12 @@ builder.Configuration.AddModuleConfiguration(
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(databaseConnectionString)
+    .AddRedis(redisConnectionString)
     .AddUrlGroup(new Uri(builder.Configuration.GetValue<string>("KeyCloak:HealthUrl")!), HttpMethod.Get, "keycloak");
+
+builder.Services.AddHRModule(builder.Configuration);
+builder.Services.AddPricingModule(builder.Configuration);
+builder.Services.AddProductModule(builder.Configuration);
 
 var app = builder.Build();
 
