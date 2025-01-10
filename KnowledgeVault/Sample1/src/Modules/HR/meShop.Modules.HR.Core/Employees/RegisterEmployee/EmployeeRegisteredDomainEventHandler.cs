@@ -10,9 +10,9 @@ using meShop.SharedKernel.Core.Messaging;
 namespace meShop.Modules.HR.Core.Employees.RegisterEmployee;
 
 internal sealed class EmployeeRegisteredDomainEventHandler(ISender sender, IEventBus eventBus)
-    : IDomainEventHandler<EmployeeRegisteredDomainEvent>
+    : DomainEventHandler<EmployeeRegisteredDomainEvent>
 {
-    public async Task Handle(EmployeeRegisteredDomainEvent notification, CancellationToken cancellationToken)
+    public override async Task Handle(EmployeeRegisteredDomainEvent notification, CancellationToken cancellationToken)
     {
         Result<EmployeeResponse> result = await sender.Send(new GetEmployeeQuery(notification.Id), cancellationToken);
 
